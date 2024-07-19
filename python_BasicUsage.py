@@ -1,3 +1,6 @@
+Python 语言参考手册
+https://docs.python.org/zh-cn/3/reference/index.html#reference-index
+
 # %%
 
 x = 20 # int
