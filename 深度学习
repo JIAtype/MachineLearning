@@ -1,0 +1,161 @@
+## 学习深度学习框架
+* TensorFlow
+* PyTorch
+* MXNet
+
+阅读相关论文**
+* 从经典论文开始，如 Hinton 的 "Learning representations by back-propagating errors"、LeCun 等人的 "Image recognition with deep convolutional networks" 等
+* 关注顶尖学术会议和期刊，如 CVPR、ICCV、NIPS、NeurIPS 等
+
+参加 Kaggle 比赛
+
+
+* **书籍**
+    * 《深度学习》 by Ian Goodfellow, Yoshua Bengio, Aaron Courville
+    * 《动手学深度学习》 by 李沐
+    * 《深度学习原理与实践》 by 吴恩达
+* **课程**
+    * 斯坦福大学公开课：CS224n: Natural Language Processing with Deep Learning
+    * 麻省理工学院公开课：6.S094: Deep Learning for Self-Driving Cars
+    * B站课程：《深度学习原理与实践》 by 吴恩达
+* **论文**
+    * [https://arxiv.org/](https://arxiv.org/)
+    * [https://www.aaai.org/ojs/index.php/aimagazine](https://www.aaai.org/ojs/index.php/aimagazine)
+
+    吴恩达老师的深度学习课程由五门课程组成，分别是：
+神经网络和深度学习
+改善深层神经网络：超参数调试、正则化以及优化
+结构化机器学习项目
+卷积神经网络
+序列模型
+
+神经网络的基础
+----------这是目录
+1.Neural Networks and Deep Learning
+#神经网络和深度学习
+项目1--用一个深度神经网络辨认猫咪
+2.Improving Deep Netural Networks: Hyperparameter tuning, Regularization and Optimization
+#升级深度神经网络：超参数调整，正则化，诊断偏差和方差，以及一些高级优化算法，比如Momentum和Adam算法
+3.Structuring your Machine Learning project
+#如何结构化你的机器学习工程
+了解到你是否需要使用端对端深度学习
+热门领域的建立并且改良许多的深度学习问题
+4.Convolutional Netural Networks
+卷积神经网络,经常缩写为 CNN（s）
+经常被用于图像领域
+5.Natural Language Processing: Building sequwnce models
+序列模型，如何将它们应用于自然语言处理以及其它问题
+序列模型包括的模型有循环神经网络(简写为RNN)，以及LSTM模型(全称是长短期记忆网络)。将其应用到 NLP （自然语言处理）问题
+自然语言就是一个单词序列。
+理解这些模型如何应用到语音识别，或者是编曲，以及其它问题。
+
+----------这是简单介绍Introduction
+Deep Learning“深度学习”指的是训练Neural Networks神经网络
+
+例子1.Housing Price Prediction房价预测
+input: 六间房屋的数据集，已知房屋的面积（单位是平方英尺或平方米）、房屋价格
+output: 函数--根据房屋面积预测房价的函数
+
+第一个简单线性回归解法：使用单神经元网络。输入面积，完成线性运算，取不小于0的值，最后得到输入预测价格。
+
+ReLU函数（Rectified Linear Unit），全称是“修正线性单元”，“修正”指的是取不小于的值。
+这个函数一开始是0，然后就是一条直线(线性回归)。
+
+考虑其他因素，bedrooms卧室的数量，邮政编码等等。
+每一个元素，都可能是一个ReLU，即“修正线性单元”，或者其他的不那么线性的函数。
+在这个例子中，家庭人口、步行化程度以及学校质量，能帮你预测房屋的价格。
+x是所有的这四个输入，y是预测的价格。把这些所有的独立的神经元叠加起来，就形成了一个稍大一点的Neural Networks神经网络。神经网络的一部分神奇之处在于，当你实现它以后，你要做的只是输入x，就能得到输入出y，不管训练集有多大，所有过程它都会自动完成。
+
+做法：
+有四个输入的神经元，输入的特征可能是卧室的数量、邮政编码和周边的富裕程度。已知这些输入的特征，神经网络的工作就是预测对应的价格。
+“隐藏单元”，每个输入都是来自四个特征。我们不会具体的说，第一个节点表示家庭人口，或者家庭人口取决于特征x1和x2。我们会这么说，神经网络你自己觉得这个节点是什么？
+我们只给你四个输入特征，随便你怎么计算。
+对于神经网络，只要你喂给它足够多的数据，关于x和y的数据，给到足够的x、y训练样本，神经网络非常擅长于计算从x到y的精准映射函数。
+
+Supervised Learning with Neural Networks
+Supervised Learning监督学习是一种机器学习方式
+
+神经网络的应用：
+向用户展示最有可能被点击的在线广告。
+计算机视觉。使用深度学习，输入图片得到索引。
+语音识别，转换成文本
+机器翻译
+自动驾驶
+
+input(x) - output(y) - application
+home features - price - real estate (Standard NN标准的神经网络)
+ad,user info - click on ad?(0/1) - online advertising (Standed NN)
+image - object(1,...,1000) - photo tagging (CNN)
+audio - text transcript - speech recognition (RNN)
+english - chinese - machine translation (knn)
+image,radar info - position of other cars - autonomous driving (Custon/Hybid)
+
+巧妙地建立x对应y的函数映射关系，并且通过监督学习拟合数据，将这个监督学习过的组件嵌入到更复杂的系统中，例如自动行驶的交通工具。当你要获取识别图像的内容时，需要用卷积神经网络CNN的架构去处理。
+在图像应用中，我们常常将卷积结构放在神经网络结构当中，简称为Convolutional NN,CNN（卷积神经网络）。
+音频需要完整的播放才能表达其意，所以一维时间序列或一维时序序列最能自然而然地代表音频的数据结构。在这种序列化数据中，常常用到RNN，即所谓的循环神经网路。
+语言最自然的表示方式也是序列数据。更复杂的RNNs，经常会用被到上述的应用当中。
+
+standard NN，标准的神经网络，
+Concolutional NN，卷积神经网络，通常用于图像数据
+Recurrent NN，循环神经网络，通常用于处理包含时间成分的一维序列数据
+
+机器学习被应用于结构化数据和非结构化数据。
+结构化数据，约等于数据库，每个特征都有清晰的定义。
+非结构化数据，是文本、音频、图像等。这里的特征可能是推按的像素值，或是文本里的某个单词。
+
+当你在自己的团队中思考神经网络的应用时，在结构化和非结构化数据中找到它们的两种用途。
+
+画一个函数图，表示机器学习的性能。水平轴代表完成任务的数据量，垂直轴代表机器学习算法的性能。
+它的性能在开始增加数据时会上升，但过一段时间之后，它的性能会逐渐地趋于平坦，这些模型无法处理海量数据。
+
+要在神经网络上获得更好的表现，在今天最可靠的手段往往就是要么训练一个更大的神经网络，要么投入更多的数据。
+这只能在一定程度上起作用，因为最终你耗尽了数据，或者最终你的网络规模太大，需要训练的时间太久。
+
+符号约定：
+带标签的数据，在训练样本时，我们有输入x和标签y。
+使用小写字母m表示训练集的规模，或者说训练样本的数量。这个小写字母m就是水平轴。
+
+Data
+Computation
+Algorithms
+在深度学习崛起的初期，是数据和计算能力规模的进展。
+训练一个特别大的神经网络的能力，无论是在CPU还是GPU上，是这些发展才让我们取得了巨大的进步。
+在最近几年，我们也见证了算法方面的极大创新，不能忽视算法。许多算法方面的创新都为了让神经网络运行得更快。
+
+sigmoid函数：在开头和结尾的地方，函数的斜率梯度会接近0。
+修正线性单元ReLU函数：它的梯度对于所有为正值的输入，输出都是1，因此结尾部分的梯度不会逐渐趋于0。
+
+用梯度下降法时，梯度接近0时参数会变化的很慢，学习也会变得很慢。
+将sigmoid函数转换成ReLU函数。能够使得“梯度下降法”运行得更快。可以加速学习进程。
+
+快速计算很重要的另一个原因是训练神经网络的过程很多时候是凭直觉的。
+当你的神经网络需要很长时间去训练（需要很长时间才能走一圈循环）的话，在实现神经网络时迭代速度对你的效率影响巨大。
+
+----------深度学习最重要的基础知识，学习如何建立并运用一个深度神经网络。
+Basics of Neural Network programming
+
+----------二分类Binary Classification
+在二分分类的问题中，目标是训练出一个分类器，它以图片的特征向量x作为输入，预测输出的结果标签y是1还是0，也就是预测图片中是否有猫。
+
+逻辑回归是一个用于二分分类的算法。
+
+例子：输出识别图的标签，如果是猫，则输出1，不是猫则输出0。
+在二分分类的问题中，目标是训练出一个分类器，它以图片的特征向量x作为输入，预测输出的结果标签y是1还是0，也就是预测图片中是否有猫。
+
+二分分类的问题中需要用到的一些符号
+用一对（x,y）表示一个单独的样本，x是n（下标x）维的特征向量，标签y的值为0或1，
+训练集由m个训练样本构成，（x(1),y(1)）表示样本1的输入和输出，（x(m),y(m)）表示样本m的输入和输出，
+这些一起就表示整个训练集，用小写字母m表示训练样本的个数。
+有时为了强调这是训练样本的个数，也可以写作mtrain，当说到测试集时用mtest来表示测试集的样本数。
+
+
+
+----------编写单隐层神经网络
+One Hidden layer Netural Networks
+
+
+
+
+
+----------建立一个多层的深层神经网络，让它为你服务
+Deep Netural Networks
